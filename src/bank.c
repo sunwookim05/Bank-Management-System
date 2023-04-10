@@ -6,7 +6,7 @@
 import SYSTEM System;
 
 boolean compareStrings(String str1, String str2) {
-    int i = 0;
+    uint8_t i = 0;
     while (str1[i] == str2[i]) {
         if (str1[i] == '\0' || str2[i] == '\0')
             break;
@@ -51,6 +51,7 @@ void sortAccount(ACCOUNT *account, FILE *fp) {
     uint8_t i, j, min_index;
     uint8_t size = sizeof(account) / sizeof(account[0]);
     ACCOUNT temp;
+    fopen("account.txt", "r");
     for (i = 0; i < size - 1; i++) {
         min_index = i;
         for (j = i + 1; j < size; j++) {
@@ -64,17 +65,24 @@ void sortAccount(ACCOUNT *account, FILE *fp) {
             account[min_index] = temp;
         }
     }
+    fclose(fp);
+    fopen("account.txt", "a");
+    rewind(fp);
+    for (i = 0; i < size; i++) fprintf(fp, "%s %s %s\n", account[i].name, account[i].accountNumber, account[i].password);
+    fclose(fp);
 }
 
 void readAccount(ACCOUNT *account, FILE *fp){
-    uint8_t i = 0;
     fopen("account.txt", "r");
-    while(fscanf(fp, "%s %s %s", account[i].name, account[i].accountNumber, account[i].password) != EOF) i++;
+    for(uint8_t i = 0; fscanf(fp, "%s %s %s", account[i].name, account[i].accountNumber, account[i].password) != EOF; i++);
     fclose(fp);
 }
 
 void printAccount(ACCOUNT *account, FILE *fp){
-
+    fopen("account.txt", "r");
+    for(uint8_t i = 0; fscanf(fp, "%s %s %s", account[i].name, account[i].accountNumber, account[i].password) != EOF; i++)
+        System.out.println("%s %s %s", account[i].name, account[i].accountNumber, account[i].password);
+    fclose(fp);
 }
 
 ManageAccount new_ManageAccount(){
