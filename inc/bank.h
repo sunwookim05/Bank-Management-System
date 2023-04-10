@@ -12,7 +12,7 @@ typedef struct _ACCOUNT_{
 
 typedef struct _ManageAccount_{
     ACCOUNT* (*new_Account)(size_t);
-    ACCOUNT (*createAccount)(String, String, String, FILE*);
+    ACCOUNT (*createAccount)(FILE*);
     void (*sortAccount)(ACCOUNT*, FILE*);
     void (*readAccount)(ACCOUNT*, FILE*);
     void (*printAccount)(ACCOUNT*, FILE*);
