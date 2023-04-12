@@ -1,9 +1,3 @@
 # Bank-Management-System
 
-This is a simple bank management system which is developed using C.
-<<<<<<< HEAD
-=======
-
-
-kimsunwoo whswkf
->>>>>>> 93fbf27cfabe09c1a317117c00b66e1f0badade6
+Bank Management System is a simple project developed in C programming language. This project is developed using file handling concept in C++. This project is a console application without graphics. This project is very helpful for the beginners to understand the file handling concept in C++.
